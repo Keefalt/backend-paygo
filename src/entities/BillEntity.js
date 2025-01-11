@@ -8,6 +8,6 @@ export class Bill extends BaseEntity {
 name;
 
 @Property({type: 'number'})
-feepermonth;
+feePerMonth;
 
 }
