@@ -3,7 +3,7 @@ import { BaseEntity } from "../utils/BaseEntity.js";
 
 export const TopUp = new EntitySchema({
   name: "TopUp",
-  tableName: "TopUp",
+  tableName: "topUp",
   extends: BaseEntity,
   properties: {
     amount: { type: "number" },

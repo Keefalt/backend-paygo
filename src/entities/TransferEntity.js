@@ -3,7 +3,7 @@ import { BaseEntity } from "../utils/BaseEntity.js";
 
 export const Transfer = new EntitySchema({
   name: "Transfer",
-  tableName: "Transfer",
+  tableName: "transfer",
   extends: BaseEntity,
   properties: {
     notes: { type: "string" },

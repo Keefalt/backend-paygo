@@ -4,7 +4,7 @@ import { User } from "./Userentity.js";
 
 export const Balance = new EntitySchema({
   name: "Balance",
-  tableName: "Balance",
+  tableName: "balance",
   extends: BaseEntity,
   properties: {
     amount: { type: "number" },
