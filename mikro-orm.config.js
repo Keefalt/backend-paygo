@@ -6,7 +6,7 @@ export default defineConfig({
   extensions: [Migrator],
   driver: PostgreSqlDriver,
   user: 'postgres',
-  password: '123',
+  password: 'Keeramik161626',
   dbName: 'example',
   host: 'localhost',
   port: '5432',

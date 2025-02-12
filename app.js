@@ -12,13 +12,7 @@ const app=express();
 // Specify a port number for the server
 const port=5000;
 
-app.use(cors());
-
-// Start the server and listen to the port
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded());
-app.use('/api', generator());
+let database;
 
 MikroORM.init({
   user: 'postgres',
@@ -28,9 +22,21 @@ MikroORM.init({
   port: '5432',
   entities: ['./dist/entities'],
   autoloadEntities: true
-}).then(()=>{
+}).then((result)=>{
   console.log('db connected');
+  database = result
+  app.use('/api', generator(database));
+
+app.use(cors());
+
+// Start the server and listen to the port
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded());
+
 })
+
+
 
 export default defineConfig({
 

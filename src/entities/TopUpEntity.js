@@ -1,19 +1,14 @@
-import { Entity, PrimaryKey, Property, t } from "@mikro-orm/core";
+import { EntitySchema } from "@mikro-orm/core";
 import { BaseEntity } from "../utils/BaseEntity.js";
 
-@Entity()
-export class TopUp extends BaseEntity {
-
-@Property({type: 'number'})
-amount;
-
-@Property({type: 'string'})
-currency;
-
-@Property({type: 'timestamp'})
-date;
-
-@Property({type: 'number'})
-tax;
-
-}
+export const TopUp = new EntitySchema({
+  name: "TopUp",
+  tableName: "TopUp",
+  extends: BaseEntity,
+  properties: {
+    amount: { type: "number" },
+    tax: { type: "number" },
+    currency: { type: "string" },
+    date: { type: "timestamp" },
+  },
+});

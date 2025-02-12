@@ -1,29 +1,22 @@
 import { readFileSync, writeFileSync } from "fs";
+import { User } from "../../entities/Userentity.js";
 
 export class AuthenticationRepository {
-    constructor(){
-        this.data = JSON.parse(readFileSync('./src/api/data.json', 'utf-8'));
+    constructor(em){
+        this.em = em
     }
 
     login(userBody){
-        const dataUser = this.data.data.find((val) => val.username === userBody.username);
-
-        if (!dataUser) { 
-            return "gada boy datanya"
-        }
-
-        if (userBody.password === dataUser.password){
-            return 'login success';
-        } else {
-            return 'wrong password';
-        }
+ 
     }
 
     register(data){
-        writeFileSync('./api/data.json', Buffer.from(JSON.stringify(data)));
-        console.log(data);
+   
+    }
 
-        return this.data
+    async getAll(search){
+        const dataALLUser = await this.em.findAll(User);
+        return dataALLUser
     }
 }
 

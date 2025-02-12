@@ -1,15 +1,11 @@
-import { Entity, PrimaryKey, Property, t } from "@mikro-orm/core";
+import { EntitySchema } from "@mikro-orm/core";
 import { BaseEntity } from "../utils/BaseEntity.js";
 
-@Entity()
-export class Role extends BaseEntity {
-    @PrimaryKey({ type: t.uuid })
-    id;
-
-    @Property({type: 'string'})
-    name;
-
-    constructor(name) {
-        this.name = name;
-    }
-}
+export const Role = new EntitySchema({
+  name: "Role",
+  tableName: "role",
+  extends: BaseEntity,
+  properties: {
+    name: { type: "string" },
+  },
+});

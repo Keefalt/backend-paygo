@@ -3,9 +3,9 @@ import { AuthenticationService } from "./authenticationService.js";
 import { Router } from "express";
 
 export class AuthenticationController {
-    constructor(){
+    constructor(service){
         // import service
-        this.service = new AuthenticationService();
+        this.service = service;
         this.login = this.login.bind(this)
     }
 
@@ -16,6 +16,7 @@ export class AuthenticationController {
         
         router.post('/login', (req, res) => this.login(req, res));
         router.post('/register', (req, res) => this.register(req, res));
+        router.get('/list-user', (req, res) => this.getAll(req, res));
         
         return router;
     }
@@ -36,5 +37,12 @@ export class AuthenticationController {
         })
     }
 
-}
+    async getAll(req, res){
+        // ambil search dari request query yang di isi oleh user 
+        // contoh google.com?search=blablabla
+        const search = req.query.search
+        const getData = await this.service.getAll(search);
+        return res.status(StatusCodes.OK).json(getData);
+    }
 
+}
